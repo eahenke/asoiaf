@@ -2,8 +2,6 @@ import { Book, Character } from '../types';
 import { extractId } from '../utils/extract-ids';
 import * as cache from './cache';
 
-const TOTAL_BOOKS = 10;
-
 export const BASE_URL = 'https://www.anapioficeandfire.com/api';
 
 async function get<T>(url: string): Promise<T> {
@@ -15,11 +13,7 @@ async function get<T>(url: string): Promise<T> {
 }
 
 export async function getBooks(): Promise<Book[]> {
-    const cachedBooks = cache.getBooks();
-    if (Object.keys(cachedBooks).length === TOTAL_BOOKS) {
-        return Object.values(cachedBooks);
-    }
-    const books = await get<Book[]>(`${BASE_URL}/books`);
+    const books = await get<Book[]>(`${BASE_URL}/books?pageSize=20`);
     books.forEach((book) => cache.addBook(extractId(book.url), book));
 
     return books;
