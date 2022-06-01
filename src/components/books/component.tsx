@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useBooks } from '../../hooks';
+import { extractBookId } from '../../utils/extract-ids';
 
 export default function Books() {
     const { data, loading, error } = useBooks();
@@ -9,7 +11,18 @@ export default function Books() {
 
     return (
         <section>
-            <pre>{JSON.stringify(data, null, 4)}</pre>
+            <ul>
+                {data.map((book) => {
+                    const bookId = extractBookId(book.url);
+                    return (
+                        <li key={book.name}>
+                            <Link to={`/books/${bookId}`} key={bookId}>
+                                {book.name}
+                            </Link>
+                        </li>
+                    );
+                })}
+            </ul>
         </section>
     );
 }
