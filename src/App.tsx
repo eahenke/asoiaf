@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import './App.css';
-import { BookInfo } from './components';
-import Books from './components/books';
+import { Books, BookInfo, CharacterInfo } from './components';
 import { ApiProvider } from './providers';
 
 function App() {
@@ -12,6 +11,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Books />}></Route>
                     <Route path="/books/:id" element={<BookInfo />}></Route>
+                    <Route path="/char/:id" element={<CharacterInfo />}></Route>
                     <Route
                         path="*"
                         element={
