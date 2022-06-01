@@ -7,7 +7,6 @@ import { Breadcrumb, DataComponent, SortableList } from '../common';
 
 const getName = (book: Book): string => book.name;
 const sortById = (a: Book, b: Book) => {
-    console.log({ a, b });
     return parseInt(extractId(a.url), 10) - parseInt(extractId(b.url), 10);
 };
 

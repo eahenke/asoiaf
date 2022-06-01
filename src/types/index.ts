@@ -18,6 +18,10 @@ export type Character = {
     books: string[];
 };
 
+export type BookWithCharacters = Omit<Book, 'characters'> & {
+    characters: Character[];
+};
+
 export type Api = {
     getBooks: () => Promise<Book[]>;
     getBook: (id: string) => Promise<Book>;
