@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Book, BookWithCharacters } from '../types';
+import { BookWithCharacters } from '../types';
 import { extractId } from '../utils/extract-ids';
 import useApi from './use-api';
 import config from '../config';
