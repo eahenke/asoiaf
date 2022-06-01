@@ -22,10 +22,10 @@ export default function BreadCrumb(): JSX.Element {
                 const path = replaceParamWithValue(route.path, params);
 
                 return (
-                    <>
+                    <span key={idx}>
                         <Link to={path}>{route.name}</Link>
                         {!isLast ? <span> / </span> : null}
-                    </>
+                    </span>
                 );
             })}
         </nav>

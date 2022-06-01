@@ -11,6 +11,7 @@ export default function useCharacter(id: string) {
     useEffect(() => {
         async function fetchBooks() {
             try {
+                if (!id) throw new Error('Character id is required');
                 const character = await api.getCharacter(id);
                 setData(character);
                 setError('');

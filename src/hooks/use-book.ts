@@ -13,6 +13,7 @@ export default function useBook(id: string) {
     useEffect(() => {
         async function fetchBooks() {
             try {
+                if (!id) throw new Error('Book id is required');
                 const book = await api.getBook(id);
                 const characters = await Promise.all(
                     book.characters.slice(0, config.charactersPerBook).map((c) => {

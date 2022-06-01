@@ -9,6 +9,8 @@ export const BASE_URL = 'https://www.anapioficeandfire.com/api';
 async function get<T>(url: string): Promise<T> {
     const res = await fetch(url);
 
+    if (res.status >= 400) throw new Error('Failed to fetch');
+
     return res.json();
 }
 

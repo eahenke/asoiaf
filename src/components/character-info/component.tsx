@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useCharacter } from '../../hooks';
 import { getName } from '../../utils/character';
-import { extractId } from '../../utils/extract-ids';
 import { DataComponent, Breadcrumb } from '../common';
 
 export default function CharacterInfo() {
@@ -18,12 +17,16 @@ export default function CharacterInfo() {
                         <dl>
                             <dt>Name</dt>
                             <dd>{getName(character)}</dd>
+                            <dt>Culture</dt>
+                            <dd>{character.culture || 'Unknown'}</dd>
+                            <dt>Gender</dt>
+                            <dd>{character.gender || 'Unknown'}</dd>
                             <dt>Born</dt>
                             <dd>{character.born || 'Unknown'}</dd>
                             <dt>Died</dt>
                             <dd>{character.died || 'Unknown'}</dd>
-                            <dt>Appears in</dt>
-                            <dd>Book(s) {character.books.map(extractId).join(', ')}</dd>
+                            <dt>Titles</dt>
+                            <dd>{character.titles.join(', ') || 'None'}</dd>
                         </dl>
                     </section>
                 ) : (

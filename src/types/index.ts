@@ -15,7 +15,7 @@ export type Character = {
     culture: string;
     born: string;
     died: string;
-    books: string[];
+    titles: string[];
 };
 
 export type BookWithCharacters = Omit<Book, 'characters'> & {
