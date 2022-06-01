@@ -1,3 +1,3 @@
-export function extractBookId(url: string): string {
+export function extractId(url: string): string {
     return url.split('/').reverse()[0];
 }

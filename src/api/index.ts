@@ -1,5 +1,5 @@
 import { Book, Character } from '../types';
-import { extractBookId } from '../utils/extract-ids';
+import { extractId } from '../utils/extract-ids';
 import * as cache from './cache';
 
 const TOTAL_BOOKS = 10;
@@ -18,7 +18,7 @@ export async function getBooks(): Promise<Book[]> {
         return Object.values(cachedBooks);
     }
     const books = await get<Book[]>(`${BASE_URL}/books`);
-    books.forEach((book) => cache.addBook(extractBookId(book.url), book));
+    books.forEach((book) => cache.addBook(extractId(book.url), book));
 
     return books;
 }

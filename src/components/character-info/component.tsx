@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useCharacter } from '../../hooks';
 import { getName } from '../../utils/character';
-import { extractBookId } from '../../utils/extract-ids';
+import { extractId } from '../../utils/extract-ids';
 import { DataComponent, Breadcrumb } from '../common';
 
 export default function CharacterInfo() {
@@ -23,7 +23,7 @@ export default function CharacterInfo() {
                             <dt>Died</dt>
                             <dd>{character.died || 'Unknown'}</dd>
                             <dt>Appears in</dt>
-                            <dd>Book(s) {character.books.map(extractBookId).join(', ')}</dd>
+                            <dd>Book(s) {character.books.map(extractId).join(', ')}</dd>
                         </dl>
                     </section>
                 ) : (
