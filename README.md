@@ -32,6 +32,8 @@ Some things that got left off due to time that would make a better app:
 
 ## Running the project
 
+Clone the project, run `npm install` and start the app with `npm start`.
+
 In the project directory, you can run:
 
 ### `npm start`
