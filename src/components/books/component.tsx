@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useBooks } from '../../hooks';
 import { Book } from '../../types';
 import { extractBookId } from '../../utils/extract-ids';
@@ -22,7 +23,9 @@ export default function Books() {
                         title="Books"
                         items={books}
                         keyExtractor={getName}
-                        valueExtractor={getName}
+                        valueExtractor={(book: Book) => (
+                            <Link to={`/books/${extractBookId(book.url)}`}>{book.name}</Link>
+                        )}
                     />
                 ) : (
                     <p>No books found</p>

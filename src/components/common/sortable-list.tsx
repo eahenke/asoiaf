@@ -6,7 +6,7 @@ type SortableListProps = {
     title: string;
     items: Record<string, any>[];
     onSort: SortFn;
-    valueExtractor: (item: any) => string;
+    valueExtractor: (item: any) => React.ReactNode;
     keyExtractor: (item: any) => string;
 };
 
