@@ -1,4 +1,4 @@
-import { Book } from '../types';
+import { Book, Character } from '../types';
 
 export const BASE_URL = 'https://www.anapioficeandfire.com/api';
 
@@ -13,4 +13,8 @@ export function getBooks(): Promise<Book[]> {
 
 export function getBook(id: string): Promise<Book> {
     return get<Book>(`${BASE_URL}/books/${id}`);
+}
+
+export function getCharacter(id: string): Promise<Character> {
+    return get<Character>(`${BASE_URL}/characters/${id}`);
 }
