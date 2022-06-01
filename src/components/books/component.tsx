@@ -1,32 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useBooks } from '../../hooks';
+import { Book } from '../../types';
 import { extractBookId } from '../../utils/extract-ids';
-import { Breadcrumb } from '../common';
+import { Breadcrumb, DataComponent, SortableList } from '../common';
+
+const getName = (book: Book): string => book.name;
+const sortById = (a: Book, b: Book) => {
+    console.log({ a, b });
+    return parseInt(extractBookId(a.url), 10) - parseInt(extractBookId(b.url), 10);
+};
 
 export default function Books() {
-    const { data, loading, error } = useBooks();
-
-    if (loading) return <section>Loading...</section>;
-    if (error) return <section>Error! {error}</section>;
-
+    const { data: books, loading, error } = useBooks();
     return (
         <main>
             <Breadcrumb />
-            <section>
-                <ul>
-                    {data.map((book) => {
-                        const bookId = extractBookId(book.url);
-                        return (
-                            <li key={book.name}>
-                                <Link to={`/books/${bookId}`} key={bookId}>
-                                    {book.name}
-                                </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </section>
+            <DataComponent loading={loading} error={error}>
+                {books.length ? (
+                    <SortableList
+                        onSort={sortById}
+                        title="Books"
+                        items={books}
+                        keyExtractor={getName}
+                        valueExtractor={getName}
+                    />
+                ) : (
+                    <p>No books found</p>
+                )}
+            </DataComponent>
         </main>
     );
 }
