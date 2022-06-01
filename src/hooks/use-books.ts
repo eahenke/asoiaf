@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import * as api from '../api';
 import { Book } from '../types';
+import useApi from './use-api';
 
 export default function useBooks() {
+    const api = useApi();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [data, setData] = useState<Book[]>([]);
@@ -22,7 +23,7 @@ export default function useBooks() {
             }
         }
         fetchBooks();
-    }, []);
+    }, [api]);
 
     return { loading, data, error };
 }

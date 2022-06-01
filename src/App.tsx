@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import Books from './components/books';
+import { ApiProvider } from './providers';
 
 function App() {
     return (
-        <div className="App">
+        <ApiProvider>
             <Books />
-        </div>
+        </ApiProvider>
     );
 }
 
